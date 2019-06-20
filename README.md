@@ -5,6 +5,7 @@
  - playergui(); returns the local gui
  - playerscripts(); returns the local scripts
  - leaderstats(); returns the leaderstats
+ 
 [Functions (With arguments)]
  - tp(CFrame); teleports the HumanoidRootPart to the given CFrame
  - create(class,properties); creates an instance with given properties as table
