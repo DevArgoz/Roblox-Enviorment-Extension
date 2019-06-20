@@ -16,13 +16,13 @@ Functions (With arguments)
 
 Tables:
  - script_db = { 
-     SPR = { [https://www.roblox.com/games/3140868024/Stateview-Prison-Roleplay]
-        Kill_All(); [Requires the glock 17 to be in your backpack]
-        Taze_All(); [Requires the taser to be in your backpack]
-        OP_Weapons(); [Affects Glcok 17, M4A1, Baton and Taser]
-        Bring_All(); [Requires the handcuffs to be in your backpack]
+     SPR = { 
+        Kill_All(); 
+        Taze_All(); 
+        OP_Weapons(); 
+        Bring_All(); 
      },
-     RobloxHQ = { [https://www.roblox.com/games/716960179/ROBLOX-HQ-w-Destruction-Tools-Admin]
-        GetKicked(); [Kicks you, dunno why I added this]
+     RobloxHQ = { 
+        GetKicked(); 
      }
  }
