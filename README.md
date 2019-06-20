@@ -1,5 +1,8 @@
 # Roblox-Enviorment-Extension
 
+Patch v1.1
+ - Added script_db (script database) only 2 games are supported at the moment, more game swill be coming soon.
+
 Functions (No arguments)
  - char(); return the players character
  - playergui(); returns the local gui
