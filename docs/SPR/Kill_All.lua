@@ -12,5 +12,5 @@ local function ShootAt(player)
 end
 
 for i,v in pairs(game.Players:GetPlayers()) do 
-	if v ~= game.Players.LocalPlayer then ShootAt(v) end
+	ShootAt(v)
 end
