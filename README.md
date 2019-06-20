@@ -14,15 +14,4 @@ Functions (With arguments)
  - setjumppower(val); sets the players jumppower
  - setgravity(val); sets the local gravity
 
-Tables:
- - script_db = { 
-     SPR = { 
-        Kill_All(); 
-        Taze_All(); 
-        OP_Weapons(); 
-        Bring_All(); 
-     },
-     RobloxHQ = { 
-        GetKicked(); 
-     }
- }
+[Documentation for script_db is coming soon!]
