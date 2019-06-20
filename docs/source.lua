@@ -35,3 +35,14 @@ end
 getgenv().setgravity = function(val)
 	workspace.Gravity = val
 end
+getgenv().script_db = {
+	SPR = {
+		Kill_All = function() loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/DevArgoz/Roblox-Enviorment-Extension/master/docs/SPR/Kill_All.lua",true))() end,
+		Taze_All = function() loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/DevArgoz/Roblox-Environment-Extension/master/docs/SPR/SPR%20Taze%20all.lua",true))() end,
+		OP_Weapons = function() loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/DevArgoz/Roblox-Environment-Extension/master/docs/SPR/OP_Weapons.lua",true))() end,
+		Bring_All = function() loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/DevArgoz/Roblox-Environment-Extension/master/docs/SPR/Bring%20all%20players.lua",true))() end
+	},
+	RobloxHQ = {
+		GetKicked = function() create("ScreenGui",{Parent=playergui;}) end
+	}
+}
