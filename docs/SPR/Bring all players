@@ -1,0 +1,11 @@
+local function Bring(PlayerToCuff)
+	game.Players.LocalPlayer.Backpack.Handcuffs.RemoteEvent:FireServer("Cuff",workspace[PlayerToCuff]["Left Arm"])
+	wait(.1)
+	game.Players.LocalPlayer.Backpack.Handcuffs.RemoteEvent:FireServer("UnCuff")
+end
+
+for i,v in pairs(game.Players:GetPlayers()) do 
+	if v.Team == game.Teams.Inmate then 
+		pcall(function() Bring(v.Name) end)
+	end
+end
