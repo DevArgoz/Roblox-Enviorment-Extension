@@ -78,6 +78,7 @@ getgenv().instanceByPath = function(path)
 	local lastParent = game
 	local obj = nil
 	for i=1,#x do
+		print("[REE] " .. x[i])
 		if i == #x then
 			obj = lastParent:FindFirstChild(x[i])
 		else
