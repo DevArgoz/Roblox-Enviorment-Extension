@@ -61,6 +61,46 @@ getgenv().getupvalue = function(_script, upvalue)
 	end
 	return nil
 end
+getgenv().instanceByPath = function(path)
+	local x = {}
+	local last = ""
+	for i=1,#path do
+		local y = string.sub(path,i,i)
+		if y == "." then
+			table.insert(x,#x+1,last)
+			last = ""
+		else
+			last = last .. y
+		end
+	end
+	table.insert(x,#x+1,last)
+	if x[1] == "game" then table.remove(x,1) end
+	local lastParent = game
+	local obj = nil
+	for i=1,#x do
+		if i == #x then
+			obj = lastParent:FindFirstChild(x[i])
+		else
+			lastParent = lastParent:FindFirstChild(x[i])
+		end
+	end
+	return obj
+end
+getgenv().splitString = function(text,ind)
+	local args = {}
+	local last = ""
+	for i=1,#text do
+		local x = string.sub(text,i,i)
+		if x == ind  then
+			table.insert(args,#args+1,last)
+			last = ""
+		else
+			last = last .. x
+		end
+	end
+	table.insert(args,#args+1,last)
+	return args
+end
 getgenv().script_db = {
 	SPR = {
 		Kill_All = function()
