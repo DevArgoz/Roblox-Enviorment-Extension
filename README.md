@@ -1,5 +1,10 @@
 # Roblox-Enviorment-Extension
 
+Patch v1.2
+ - Added join_place
+ - Added setupvalue
+ - Added getupvalue
+
 Patch v1.1
  - Added script_db (script database) only 2 games are supported at the moment, more game swill be coming soon.
 
@@ -16,5 +21,8 @@ Functions (With arguments)
  - setwalkspeed(val); sets the players walkspeed
  - setjumppower(val); sets the players jumppower
  - setgravity(val); sets the local gravity
+ - setupvalue(script,upvalue,value); changes a LOCAL value of the given script
+ - getupvalue(script,upvalue); returns a LOCAL value of the given script
+ - join_place(placeId); teleports the local player to the given place
 
 [Documentation for script_db is coming soon!]
