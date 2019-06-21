@@ -74,18 +74,19 @@ getgenv().instanceByPath = function(path)
 		end
 	end
 	table.insert(x,#x+1,last)
-	if x[1] == "game" then table.remove(x,1) end
-	local lastParent = game
-	local obj = nil
-	for i=1,#x do
-		print("[REE] " .. x[i])
-		if i == #x then
-			obj = lastParent:FindFirstChild(x[i])
-		else
-			lastParent = lastParent:FindFirstChild(x[i])
+	for i=1,#x do 
+		if x[i] == "LocalPlayer" then 
+			x[i] = game.Players.LocalPlayer.Name
 		end
 	end
-	return obj
+	for i,v in pairs(game:GetDescendants()) do 
+		if v.Name == x[#x] then 
+			if v:GetFullName() == table.concat(x,".") then 
+				return v
+			end
+		end
+	end
+	return nil
 end
 getgenv().splitString = function(text,ind)
 	local args = {}
