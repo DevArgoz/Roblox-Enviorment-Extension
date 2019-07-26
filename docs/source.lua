@@ -1,8 +1,10 @@
 hookfunction(getgenv().error,function(msg,trace)
-    warn("[R-E-E] [ERROR] [TRACE " .. trace or "0" .. "]: " .. msg)
+    local trace = trace or 0
+    warn("[R-E-E] [ERROR] [TRACE " .. trace .. "]: " .. msg)
 end)
 hookfunction(getrenv().error,function(msg,trace)
-    warn("[R-E-E] [ERROR] [TRACE " .. trace or "0" .. "]: " .. msg)
+    local trace = trace or 0
+    warn("[R-E-E] [ERROR] [TRACE " .. trace .. "]: " .. msg)
 end)
 local function iwarn(s)
 	warn("[R-E-E]: "..tostring(s))
