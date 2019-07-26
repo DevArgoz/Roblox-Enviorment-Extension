@@ -1,5 +1,12 @@
 # Roblox-Enviorment-Extension
 
+Patch v1.3
+ - Added antikick(status); status: true/false
+ - Added string.getLocation(object,string);
+ - Added string.getLocations(object,string);
+ - Added string.split(object,splitIndicator);
+ - string.random(length,specialCharacters);
+
 Patch v1.2
  - Added join_place
  - Added setupvalue
