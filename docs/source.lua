@@ -281,3 +281,22 @@ getgenv().saveconsolelog = function(fileName)
     _G.REE.LogSaveBuffer = {}
     return true
 end
+		
+getgenv().fetchTable(tab,...)
+    local op = ""
+    local args = {...}
+    local nom = 0
+    if args[2] then nom = args[2] end
+    local space = nom * 4
+    if args[1] then op = tostring(args[1]) .. ": " end
+    for i,v in pairs(tab) do 
+        if type(v) == "table" then 
+            if #v == 0 then 
+                iwarn(string.rep(" ",space) .. i .. ":")
+            end
+            fetchTable(v,i,nom + 1)
+        else
+            iwarn(string.rep(" ",space) .. i .. " => " .. tostring(v))
+        end
+    end
+end
