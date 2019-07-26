@@ -2,9 +2,19 @@ _G.REE = {}
 _G.REE.SaveLog = false
 _G.REE.LogSaveBuffer = {}
 local function iwarn(s)
+	s = string.gsub(s, "[R-E-E]: ", "")
 	warn("[R-E-E]: "..tostring(s))
 local function iprint(s)
+	s = string.gsub(s, "[R-E-E]: ", "")
 	print("[R-E-E]: "..tostring(s))
+hookfunction(getgenv().error,function(msg,trace)
+    local trace = trace or 0
+    warn("[R-E-E] [ERROR] [TRACE " .. trace .. "]: " .. msg)
+end)
+hookfunction(getrenv().error,function(msg,trace)
+    local trace = trace or 0
+    warn("[R-E-E] [ERROR] [TRACE " .. trace .. "]: " .. msg)
+end)
 getgenv().char = function()
 	return game.Players.LocalPlayer.Character
 end
