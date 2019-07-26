@@ -1,6 +1,11 @@
-_G.REE = {}
-_G.REE.SaveLog = false
-_G.REE.LogSaveBuffer = {}
+hookfunction(getgenv().error,function(msg,trace)
+    local trace = trace or 0
+    warn("[R-E-E] [ERROR] [TRACE " .. trace .. "]: " .. msg)
+end)
+hookfunction(getrenv().error,function(msg,trace)
+    local trace = trace or 0
+    warn("[R-E-E] [ERROR] [TRACE " .. trace .. "]: " .. msg)
+end)
 local function iwarn(s)
 	warn("[R-E-E]: "..tostring(s))
 local function iprint(s)
@@ -245,29 +250,4 @@ getgenv().antikick = function(val)
         end)
         setreadonly(MT,true)
     end
-end
-getgenv().consolelog = function(toggle)
-	_G.REE.SaveLog = not _G.REE.SaveLog
-	return true
-end
-game:GetService"LogService".MessageOut:Connect(function(msg,type)
-	if not _G.REE.SaveLog then return false end
-	local time = os.date(*t)
-	local message = "["..time.hour..":"..time.min..":"..time.sec.."] ["..tostring(type).."]: "..tostring(msg)
-	table.insert(_G.REE.LogSaveBuffer,#_G.REE.LogSaveBuffer+1,message)
-	return true
-end)
-getgenv().saveconsolelog = function(fileName)
-    local clog = _G.REE.LogSaveBuffer
-    local current = ""
-    for i=1,#clog do
-        if current == "" then
-            current = clog[i] .. "\n"
-        else
-            current = current .. clog[i] .. "\n"
-        end
-    end
-    writefile(fileName,current)
-    _G.REE.LogSaveBuffer = {}
-    return true
 end
