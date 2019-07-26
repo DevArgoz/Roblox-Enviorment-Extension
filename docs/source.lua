@@ -155,3 +155,66 @@ getgenv().script_db = {
 		end
 	}
 }
+setreadonly(string,false)
+string.getLocation = function(obj,str)
+    local indBegin = -1
+    local indEnd = -1
+    for i=1,#obj do
+        if string.sub(obj,i,i) == string.sub(str,1,1) then
+            local miss = false
+            for ind=1,#str do
+                if not string.sub(obj,i+ind,i+ind) == string.sub(str,ind,ind) then
+                    miss = true
+                end
+            end
+            if not miss then
+                indBegin = i
+                indEnd = i+#str
+            end
+        end
+    end
+    return indBegin,indEnd
+end
+string.getLocations = function(obj,str)
+    local founds = {}
+    for i=1,#obj do
+        if string.sub(obj,i,i) == string.sub(str,1,1) then
+            local miss = false
+            for ind=1,#str do
+                if not string.sub(obj,i+ind,i+ind) == string.sub(str,ind,ind) then
+                    miss = true
+                end
+            end
+            if not miss then
+                table.insert(founds,{["begin"]=i,["end"]=i+#str-1})
+            end
+        end
+    end
+    return founds
+end
+
+string.split = function(obj,ind)
+    local args,last = {},""
+    for i=1,#obj do
+        if string.sub(obj,i,i) == ind then
+            table.insert(args,last);last=""
+        else
+            last = last .. string.sub(obj,i,i)
+        end
+    end
+    table.insert(args,last);
+    return args
+end
+string.random = function(length,specialChars)
+    local chars = "abcedfghijklmnopqrstuvwxyz1234567890"
+    local schars = chars .. "();:-.#+^/*+"
+    local str = ""
+    for i=1,length do
+        local r = math.random(1,#chars)
+        if specialChars then
+            r = math.random(1,#schars)
+        end
+        str = str .. string.sub(schars,r,r)
+    end
+    return str
+end
