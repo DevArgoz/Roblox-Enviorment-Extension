@@ -1,3 +1,7 @@
+local function warn(s)
+	warn("[R-E-E]: "..tostring(s))
+local function print(s)
+	print("[R-E-E]: "..tostring(s))
 getgenv().char = function()
 	return game.Players.LocalPlayer.Character
 end
