@@ -1,6 +1,6 @@
-local function warn(s)
+local function iwarn(s)
 	warn("[R-E-E]: "..tostring(s))
-local function print(s)
+local function iprint(s)
 	print("[R-E-E]: "..tostring(s))
 getgenv().char = function()
 	return game.Players.LocalPlayer.Character
@@ -232,10 +232,10 @@ getgenv().antikick = function(val)
             local m = ({...})[select('#', ...)]
             local args = {...}
             if m == "Kick" and settings_antikick == true then
-                warn("KICK ATTEMPT:")
-                warn("Object: " .. self:GetFullName() or tostring(self))
-                warn("Reason: " .. args[1] or "")
-                warn("Time: " .. os.date("*t").hour .. "/" .. os.date("*t").min .. "/" .. os.date("*t").sec)
+                iwarn("KICK ATTEMPT:")
+                iwarn("Object: " .. self:GetFullName() or tostring(self))
+                iwarn("Reason: " .. args[1] or "")
+                iwarn("Time: " .. os.date("*t").hour .. "/" .. os.date("*t").min .. "/" .. os.date("*t").sec)
                 return true
             end
             return OldNameCall and OldNameCall(self, ...) or self[m](self, unpack({...}))
