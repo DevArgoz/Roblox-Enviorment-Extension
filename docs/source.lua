@@ -218,3 +218,24 @@ string.random = function(length,specialChars)
     end
     return str
 end
+getgenv().antikick = function(val)
+    settings_antikick = val
+    if val then
+        local MT = getrawmetatable(game)
+        local OldNameCall = MT.__namecall
+        setreadonly(MT,false)
+        MT.__namecall = newcclosure(function(self,...)
+            local m = ({...})[select('#', ...)]
+            local args = {...}
+            if m == "Kick" and settings_antikick == true then
+                warn("KICK ATTEMPT:")
+                warn("Object: " .. self:GetFullName() or tostring(self))
+                warn("Reason: " .. args[1] or "")
+                warn("Time: " .. os.date("*t").hour .. "/" .. os.date("*t").min .. "/" .. os.date("*t").sec)
+                return true
+            end
+            return OldNameCall and OldNameCall(self, ...) or self[m](self, unpack({...}))
+        end)
+        setreadonly(MT,true)
+    end
+end
